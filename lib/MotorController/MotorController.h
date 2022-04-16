@@ -7,14 +7,15 @@
 
 class MotorController
 {
-    private:
-        int pin0;
-        int pin1;
-        int convertSpeedToDriveValue(double speed);
-    public:
-        MotorController(int pinA, int pinB);
-        void driveMotor(double speed);
-        ~MotorController();
+private:
+    int pin0;
+    int pin1;
+    int convertSpeedToDriveValue(double speed);
+
+public:
+    MotorController(int pinA, int pinB);
+    void driveMotor(double speed);
+    ~MotorController();
 };
 
 #endif
