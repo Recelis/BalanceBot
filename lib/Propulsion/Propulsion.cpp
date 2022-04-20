@@ -5,10 +5,10 @@ Propulsion::Propulsion(): MotorA(D1, D3, 1),
 {
 }
 
-void Propulsion::driveRobot(double mag, double direct)
+void Propulsion::driveRobot(double mag, double ang)
 {
     magnitude = mag;
-    direction = direct;
+    angle = ang;
     MotorA.driveMotor(magnitude);
     MotorB.driveMotor(magnitude);
 }
