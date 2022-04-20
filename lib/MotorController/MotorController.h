@@ -1,19 +1,20 @@
-#ifndef __MOTORCONTROLLER_H_
-#define __MOTORCONTROOLLER_H_
+#ifndef MOTORCONTROLLER_H
+#define MOTORCONTROLLER_H
 
 #include <Arduino.h>
+// https://hackaday.io/project/8856-incubator-controller/log/29291-node-mcu-motor-shield
 
-#define MAX_SPEED 30 // found through testing. cm/s
+#define MAX_SPEED 100 // found through testing. cm/s
 
 class MotorController
 {
 private:
-    int pin0;
-    int pin1;
+    int pwm;
+    int dir;
     int convertSpeedToDriveValue(double speed);
 
 public:
-    MotorController(int pinA, int pinB);
+    MotorController(int pwmIn, int dirIn);
     void driveMotor(double speed);
     ~MotorController();
 };

@@ -1,10 +1,11 @@
 #include "MotorController.h"
 
-MotorController::MotorController(int pin0, int pin1)
-{
-    pinMode(pin0, OUTPUT);
-    pinMode(pin1, OUTPUT);
-}
+MotorController::MotorController(int pwmIn, int dirIn){
+    pwm = pwmIn;
+    dir = dirIn;
+    pinMode(pwm, OUTPUT);
+    pinMode(dir, OUTPUT);
+};
 
 int MotorController::convertSpeedToDriveValue(double speed)
 {
@@ -13,20 +14,29 @@ int MotorController::convertSpeedToDriveValue(double speed)
 
 void MotorController::driveMotor(double speed)
 {
+    Serial.println("drive motor");
     int driveValue = convertSpeedToDriveValue(speed);
-    if (speed > 0)
-    {
-        analogWrite(pin0, 0);
-        analogWrite(pin1, driveValue);
-    }
-    else if (speed < 0)
-    {
-        analogWrite(pin0, driveValue);
-        analogWrite(pin1, 0);
-    }
-    else
-    {
-        analogWrite(pin0, 0);
-        analogWrite(pin0, 0);
-    }
+    Serial.println(speed);
+    Serial.println(driveValue);
+    Serial.println(pwm);
+    Serial.println(dir);
+    analogWrite(pwm, driveValue);
+        digitalWrite(dir, 1);
+    // if (speed > 0)
+    // {
+    //     analogWrite(pwm, driveValue);
+    //     digitalWrite(dir, 1);
+    // }
+    // else if (speed < 0)
+    // {
+    //     analogWrite(pwm, driveValue);
+    //     digitalWrite(dir, 0);
+    // }
+    // else
+    // {
+    //     analogWrite(pwm, 0);
+    //     digitalWrite(dir, 0);
+    // }
 }
+
+MotorController::~MotorController(){};
