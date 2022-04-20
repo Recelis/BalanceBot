@@ -20,23 +20,22 @@ void MotorController::driveMotor(double speed)
     Serial.println(driveValue);
     Serial.println(pwm);
     Serial.println(dir);
-    analogWrite(pwm, driveValue);
+
+    if (speed > 0)
+    {
+        analogWrite(pwm, driveValue);
         digitalWrite(dir, 1);
-    // if (speed > 0)
-    // {
-    //     analogWrite(pwm, driveValue);
-    //     digitalWrite(dir, 1);
-    // }
-    // else if (speed < 0)
-    // {
-    //     analogWrite(pwm, driveValue);
-    //     digitalWrite(dir, 0);
-    // }
-    // else
-    // {
-    //     analogWrite(pwm, 0);
-    //     digitalWrite(dir, 0);
-    // }
+    }
+    else if (speed < 0)
+    {
+        analogWrite(pwm, driveValue);
+        digitalWrite(dir, 0);
+    }
+    else
+    {
+        analogWrite(pwm, 0);
+        digitalWrite(dir, 0);
+    }
 }
 
 MotorController::~MotorController(){};
