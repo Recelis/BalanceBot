@@ -1,7 +1,7 @@
 #include "Propulsion.h"
 
-Propulsion::Propulsion(): MotorA(D1, D3),
-    MotorB(D2, D4)
+Propulsion::Propulsion(): MotorA(D1, D3, 1),
+    MotorB(D2, D4, 0)
 {
 }
 
